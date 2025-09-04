@@ -1,3 +1,5 @@
+https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33
+https://modrinth.com/mod/armor-hud-by-mcjunky33
 # Armor Hud
 
 ## English Description
@@ -51,3 +53,4 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu, um das HUD nach deinen Vorstellungen einzustellen.
 
 ---
+
