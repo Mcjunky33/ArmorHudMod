@@ -1,5 +1,5 @@
 
-ArmorHudMod
+# Armor HUD Mod by Mcjunky33
 
 Customizable Armor Hud with customizable durability Hud
 
@@ -7,5 +7,6 @@ Customizable Armor Hud with customizable durability Hud
 
 Bug Fixes:
 
-Nothing :)
+# Nothing :)
 This is the first Release of my Mod
+
