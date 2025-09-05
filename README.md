@@ -1,5 +1,5 @@
 # Armor Hud
-- **Changelog: https://github.com/Mcjunky33/ArmorHudMod/blob/main/CHANGELOGver0.2.md**
+- **Changelog: https://github.com/Mcjunky33/ArmorHudMod/blob/main/CHANGELOGver0.3.md**
  
 - **Modrinth: https://modrinth.com/mod/armor-hud-by-mcjunky33**
   
@@ -70,6 +70,7 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 ![HUD preview](pictures/3.png)
 ![HUD preview](pictures/4.png)
 ![HUD preview](pictures/5.png)
+
 
 
 
