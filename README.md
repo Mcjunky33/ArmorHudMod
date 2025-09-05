@@ -1,5 +1,6 @@
 # Armor Hud
 - **Changelog: https://github.com/Mcjunky33/ArmorHudMod/blob/main/CHANGELOGver0.2.md**
+- **Modrnth: https://modrinth.com/mod/armor-hud-by-mcjunky33**
 ## English Description
 
 Armor Hud is a lightweight and fully customizable Minecraft mod that displays your armor and durability directly on the screen. The mod offers a clean and modern interface, allowing you to keep track of your armor status at all times without opening your inventory. All elements of the HUD can be easily adjusted to fit your preferences, making it perfect for both casual and competitive players.
@@ -59,5 +60,6 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 1. Installiere Fabric und ModMenu.
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
+
 
 
