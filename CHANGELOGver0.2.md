@@ -1,19 +1,27 @@
-# Changelog
+## Changelog
 
-## [0.3] – Bugfix Release
+### ENGLISH
 
-### English
+**ArmorHud v0.2 – Recent Changes**
 
-- **UI improvements:** The configuration menu now looks better and is more user-friendly.
-- **GUI scale bug fixed:** Fixed a bug where the menu did not display correctly at different GUI scales (reported by a user).
-- **Mode switching fixed:** When changing between display modes (vertical/horizontal/split), all options and HUD elements are now shown correctly and no longer bugged.
+- Added: Split mode for the HUD, allowing separation of armor slots into left/right sides.
+- Added: The config menu can now be opened via keybind (default: F10).
+- Improved: The config menu has been redesigned and is now much more visually appealing.
+- Added: A live preview of the HUD is shown directly in the config menu.
+- Fixed: Various random Java crashes related to the mod have been resolved.
+- Added: You can now adjust the size of the armor slot boxes and set the spacing between them in the menu.
 
 ---
 
-### Deutsch
+### DEUTSCH
 
-- **UI-Verbesserungen:** Das Konfigurationsmenü sieht jetzt besser aus und ist benutzerfreundlicher.
-- **GUI-Scale-Bug behoben:** Ein Fehler, wodurch das Menü bei verschiedenen GUI-Skalen nicht korrekt angezeigt wurde (von einem Nutzer gemeldet), ist jetzt behoben.
-- **Modus-Umschaltung gefixt:** Beim Wechseln zwischen Anzeige-Modi (vertikal/horizontal/split) werden jetzt alle Optionen und HUD-Elemente richtig angezeigt und sind nicht mehr verbuggt.
+**ArmorHud v0.2 – Änderungen**
+
+- Hinzugefügt: Split-Modus für das HUD, wodurch die Rüstungsslots auf der linken/rechten Seite angezeigt werden können.
+- Hinzugefügt: Das Config-Menü lässt sich jetzt per Tastenkürzel öffnen (Standard: F10).
+- Verbessert: Das Menü wurde komplett neu und deutlich hübscher gestaltet.
+- Hinzugefügt: Im Menü wird eine Live-Vorschau der HUD-Anzeige gezeigt.
+- Behoben: Diverse zufällige Java-Crashes im Zusammenhang mit dem Mod wurden behoben.
+- Hinzugefügt: Die Größe der Rüstungskästchen sowie der Abstand zwischen ihnen kann jetzt im Menü angepasst werden.
 
 ---
