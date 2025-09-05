@@ -1,7 +1,7 @@
 # Armor Hud
 - **Changelog: https://github.com/Mcjunky33/ArmorHudMod/blob/main/CHANGELOGver0.2.md**
  
-- **Modrnth: https://modrinth.com/mod/armor-hud-by-mcjunky33**
+- **Modrinth: https://modrinth.com/mod/armor-hud-by-mcjunky33**
   
 - **Curseforge: https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33**
   
@@ -64,6 +64,7 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 1. Installiere Fabric und ModMenu.
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
+
 
 
 
