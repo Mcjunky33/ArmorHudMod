@@ -5,12 +5,16 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gl.RenderPipelines;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 
 public class ArmorHudOverlay {
     private final ArmorHudConfig config = ArmorHudConfig.getInstance();
     private static final Identifier HOTBAR_TEXTURE = Identifier.of("armor_hud", "textures/gui/hotbar_texture.png");
     private static final Identifier HOTBAR_TEXTURE_DARK = Identifier.of("armor_hud", "textures/gui/hotbar_texture_dark.png");
+
+    // Display order: Helmet, Chestplate, Leggings, Boots
+    private static final int[] ARMOR_ORDER = {39, 38, 37, 36};
 
     public void renderArmorUI(DrawContext context) {
         MinecraftClient client = MinecraftClient.getInstance();
@@ -19,68 +23,103 @@ public class ArmorHudOverlay {
             return;
         }
 
-        // Get armor items
+        // Get armor items in proper display order
         ItemStack[] armorItems = new ItemStack[4];
         for (int i = 0; i < 4; i++) {
-            armorItems[i] = client.player.getInventory().getStack(36 + i);
+            armorItems[i] = client.player.getInventory().getStack(ARMOR_ORDER[i]);
         }
 
-        // Get screen width and height
         int screenWidth = client.getWindow().getScaledWidth();
         int screenHeight = client.getWindow().getScaledHeight();
 
-        // Use config values
         int boxSize = config.getBoxSize();
         int spacing = config.getSpacing();
-        int xOffset = screenWidth / 2 + config.getXOffset();
-        int yOffset = screenHeight + config.getYOffset();
 
-        // Draw armor boxes and icons
-        for (int i = armorItems.length - 1; i >= 0; i--) {
-            ItemStack armorItem = armorItems[i];
-
-            if (!armorItem.isEmpty()) {
-                int armorSpacing = (armorItems.length - 1 - i) * (boxSize + spacing);
-                int boxX = xOffset;
-                int boxY = yOffset;
-
-                // NEU: Vertikal/Horizontal
-                if (config.isVertical()) {
-                    boxY += armorSpacing;
-                } else {
-                    boxX += armorSpacing;
+        // Korrektes Koordinatensystem (vertical/stacked/split)
+        if (config.isVertical()) {
+            if (config.isSplitMode()) {
+                // vertical=true & splitMode=true (Stacked+Split)
+                // Helm & Chestplate (Box 0 & 1)
+                int xOffsetLeft2 = screenWidth / 2 + config.getXOffsetLeft2();
+                int yOffsetLeft2 = screenHeight + config.getYOffsetLeft2();
+                for (int i = 0; i < 2; i++) {
+                    if (!armorItems[i].isEmpty()) {
+                        drawBoxAndArmor(context, armorItems[i], xOffsetLeft2, yOffsetLeft2, boxSize, spacing, i, true);
+                    }
                 }
-
-                // Draw box background (dark mode logic included)
-                drawTexture(context, boxX, boxY, boxSize, boxSize);
-
-                // Draw armor icon
-                context.drawItem(armorItem, boxX + (boxSize - 16) / 2, boxY + (boxSize - 16) / 2);
-
-                // Umschalt-Logik für Bar/Text
-                if (config.isShowDurabilityBar()) {
-                    drawDurabilityBar(context, boxX, boxY + boxSize - 6, boxSize, armorItem);
+                // Leggings & Boots (Box 2 & 3)
+                int xOffsetRight = screenWidth / 2 + config.getXOffsetRight();
+                int yOffsetRight = screenHeight + config.getYOffsetRight();
+                for (int i = 2; i < 4; i++) {
+                    if (!armorItems[i].isEmpty()) {
+                        drawBoxAndArmor(context, armorItems[i], xOffsetRight, yOffsetRight, boxSize, spacing, i - 2, true);
+                    }
                 }
-                if (config.isShowDurabilityAsNumber()) {
-                    drawDurabilityTextSimple(context, boxX, boxY, boxSize, armorItem);
+            } else {
+                // vertical=true & splitMode=false (Stacked ohne Split): Alle 4 Boxen
+                int xOffsetLeft1 = screenWidth / 2 + config.getXOffsetLeft1();
+                int yOffsetLeft1 = screenHeight + config.getYOffsetLeft1();
+                for (int i = 0; i < 4; i++) {
+                    if (!armorItems[i].isEmpty()) {
+                        drawBoxAndArmor(context, armorItems[i], xOffsetLeft1, yOffsetLeft1, boxSize, spacing, i, true);
+                    }
+                }
+            }
+        } else if (config.isSplitMode()) {
+            // Split horizontal: Links (Helmet, Chestplate), Rechts (Leggings, Boots)
+            int xOffsetLeft2 = screenWidth / 2 + config.getXOffsetLeft2();
+            int yOffsetLeft2 = screenHeight + config.getYOffsetLeft2();
+            for (int i = 0; i < 2; i++) {
+                if (!armorItems[i].isEmpty()) {
+                    drawBoxAndArmor(context, armorItems[i], xOffsetLeft2, yOffsetLeft2, boxSize, spacing, i, false);
+                }
+            }
+            int xOffsetRight = screenWidth / 2 + config.getXOffsetRight();
+            int yOffsetRight = screenHeight + config.getYOffsetRight();
+            for (int i = 2; i < 4; i++) {
+                if (!armorItems[i].isEmpty()) {
+                    drawBoxAndArmor(context, armorItems[i], xOffsetRight, yOffsetRight, boxSize, spacing, i - 2, false);
+                }
+            }
+        } else {
+            // horizontal, kein split
+            int xOffset = screenWidth / 2 + config.getXOffset();
+            int yOffset = screenHeight + config.getYOffset();
+            for (int i = 0; i < 4; i++) {
+                if (!armorItems[i].isEmpty()) {
+                    drawBoxAndArmor(context, armorItems[i], xOffset, yOffset, boxSize, spacing, i, false);
                 }
             }
         }
     }
 
-    private void drawTexture(DrawContext context, int x, int y, int width, int height) {
+    private void drawBoxAndArmor(DrawContext context, ItemStack armorItem, int baseX, int baseY, int boxSize, int spacing, int idx, boolean vertical) {
+        int boxX = baseX + (!vertical ? idx * (boxSize + spacing) : 0);
+        int boxY = baseY + (vertical ? idx * (boxSize + spacing) : 0);
+
         Identifier texture = config.isDarkMode() ? HOTBAR_TEXTURE_DARK : HOTBAR_TEXTURE;
-        context.drawTexture(
-                RenderPipelines.GUI_TEXTURED,
-                texture,
-                x, y,
-                0, 0,
-                width, height,
-                width, height
-        );
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, texture, boxX, boxY, 0, 0, boxSize, boxSize, boxSize, boxSize);
+
+        // Pixel-perfect center item (16x16 icons)
+        int itemSize = 16;
+        int itemX = boxX + Math.round((boxSize - itemSize) / 2f);
+        int itemY = boxY + Math.round((boxSize - itemSize) / 2f);
+        context.drawItem(armorItem, itemX, itemY);
+
+        if (config.isShowDurabilityBar()) {
+            drawDurabilityBar(context, boxX, boxY + boxSize - 6, boxSize, armorItem);
+        }
+        if (config.isShowDurabilityAsNumber()) {
+            drawDurabilityTextSimple(context, boxX, boxY, boxSize, armorItem);
+        }
     }
 
-    private void drawDurabilityBar(DrawContext context, int x, int y, int width, ItemStack item) {
+    private void drawTexture(DrawContext context, int x, int y, int width, int height) {
+        Identifier texture = config.isDarkMode() ? HOTBAR_TEXTURE_DARK : HOTBAR_TEXTURE;
+        context.drawTexture(RenderPipelines.GUI_TEXTURED, texture, x, y, 0, 0, width, height, width, height);
+    }
+
+    public void drawDurabilityBar(DrawContext context, int x, int y, int width, ItemStack item) {
         int maxDamage = item.getMaxDamage();
         int damage = item.getDamage();
 
@@ -100,7 +139,7 @@ public class ArmorHudOverlay {
         fill(context, barX, y, barX + remainingWidth, y + barHeight / 2, barColor);
     }
 
-    private void drawDurabilityTextSimple(DrawContext context, int boxX, int boxY, int boxSize, ItemStack item) {
+    public void drawDurabilityTextSimple(DrawContext context, int boxX, int boxY, int boxSize, ItemStack item) {
         int maxDamage = item.getMaxDamage();
         int damage = item.getDamage();
         if (maxDamage <= 0) return;
@@ -129,13 +168,7 @@ public class ArmorHudOverlay {
         int textX = boxX + (boxSize - textWidth) / 2;
         int textY = boxY + boxSize - textHeight - 0;
 
-        context.drawTextWithShadow(
-                textRenderer,
-                durabilityText,
-                textX,
-                textY,
-                color
-        );
+        context.drawTextWithShadow(textRenderer, durabilityText, textX, textY, color);
     }
 
     private void fill(DrawContext context, int x1, int y1, int x2, int y2, int color) {
@@ -165,5 +198,86 @@ public class ArmorHudOverlay {
         }
 
         return (255 << 24) | (r << 16) | (g << 8) | b;
+    }
+
+    // ----------- PREVIEW FÜR CONFIG-SCREEN -----------
+    public static void renderPreview(DrawContext context, int screenWidth, int screenHeight, ArmorHudConfig config) {
+        // Display order: Helmet, Chestplate, Leggings, Boots
+        ItemStack[] previewArmor = new ItemStack[] {
+                new ItemStack(Items.DIAMOND_HELMET),
+                new ItemStack(Items.GOLDEN_CHESTPLATE),
+                new ItemStack(Items.LEATHER_LEGGINGS),
+                new ItemStack(Items.CHAINMAIL_BOOTS)
+        };
+        for (int i = 0; i < previewArmor.length; i++) {
+            ItemStack item = previewArmor[i];
+            int max = item.getMaxDamage();
+            int val;
+            switch (i) {
+                case 0: val = max*9/10; break;    // Helmet 10%
+                case 1: val = max/4; break;       // Chestplate 25%
+                case 2: val = max*3/4; break;     // Leggings 75%
+                case 3: val = max/2; break;       // Boots 50%
+                default: val = 0;
+            }
+            item.setDamage(val);
+        }
+
+        int boxSize = config.getBoxSize();
+        int spacing = config.getSpacing();
+
+        if (config.isVertical()) {
+            if (config.isSplitMode()) {
+                // Split vertical: Helm & Chestplate (Box 0 & 1)
+                int xOffsetLeft2 = screenWidth / 2 + config.getXOffsetLeft2();
+                int yOffsetLeft2 = screenHeight + config.getYOffsetLeft2();
+                for (int i = 0; i < 2; i++) {
+                    if (!previewArmor[i].isEmpty()) {
+                        (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffsetLeft2, yOffsetLeft2, boxSize, spacing, i, true);
+                    }
+                }
+                // Split vertical: Leggings & Boots (Box 2 & 3)
+                int xOffsetRight = screenWidth / 2 + config.getXOffsetRight();
+                int yOffsetRight = screenHeight + config.getYOffsetRight();
+                for (int i = 2; i < 4; i++) {
+                    if (!previewArmor[i].isEmpty()) {
+                        (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffsetRight, yOffsetRight, boxSize, spacing, i - 2, true);
+                    }
+                }
+            } else {
+                // Stacked vertical, ohne Split: Alle 4 Boxen
+                int xOffsetLeft1 = screenWidth / 2 + config.getXOffsetLeft1();
+                int yOffsetLeft1 = screenHeight + config.getYOffsetLeft1();
+                for (int i = 0; i < 4; i++) {
+                    if (!previewArmor[i].isEmpty()) {
+                        (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffsetLeft1, yOffsetLeft1, boxSize, spacing, i, true);
+                    }
+                }
+            }
+        } else if (config.isSplitMode()) {
+            // Split horizontal: Links (Helmet, Chestplate), Rechts (Leggings, Boots)
+            int xOffsetLeft2 = screenWidth / 2 + config.getXOffsetLeft2();
+            int yOffsetLeft2 = screenHeight + config.getYOffsetLeft2();
+            for (int i = 0; i < 2; i++) {
+                if (!previewArmor[i].isEmpty()) {
+                    (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffsetLeft2, yOffsetLeft2, boxSize, spacing, i, false);
+                }
+            }
+            int xOffsetRight = screenWidth / 2 + config.getXOffsetRight();
+            int yOffsetRight = screenHeight + config.getYOffsetRight();
+            for (int i = 2; i < 4; i++) {
+                if (!previewArmor[i].isEmpty()) {
+                    (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffsetRight, yOffsetRight, boxSize, spacing, i - 2, false);
+                }
+            }
+        } else {
+            int xOffset = screenWidth / 2 + config.getXOffset();
+            int yOffset = screenHeight + config.getYOffset();
+            for (int i = 0; i < 4; i++) {
+                if (!previewArmor[i].isEmpty()) {
+                    (new ArmorHudOverlay()).drawBoxAndArmor(context, previewArmor[i], xOffset, yOffset, boxSize, spacing, i, false);
+                }
+            }
+        }
     }
 }

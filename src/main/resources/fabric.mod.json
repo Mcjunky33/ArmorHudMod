@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
   "id": "armor_hud",
-  "version": "0.1",
+  "version": "0.3.0",
   "name": "Armor Hud",
-  "description": "Customizable Armor Hud with customizable durability Hud",
+  "description": "Customizable Armor Hud with customizable durability HUD",
   "authors": [
     "Mcjunky33"
   ],
   "contact": {
-    "website": "https://github.com/Mcjunky33/ArmorHudMod"
+    "sources": "https://github.com/Mcjunky33/ArmorHudMod"
   },
   "license": "MIT",
   "icon": "assets/armor_hud/logo/ArmorHUDLogo.png",
   "environment": "*",
   "entrypoints": {
-    "client": [
-      "de.mcjunky33.armor_hud.client.Armor_hudClient"
-    ],
     "main": [
       "de.mcjunky33.armor_hud.Armor_hud"
+    ],
+    "client": [
+      "de.mcjunky33.armor_hud.client.Armor_hudClient"
     ],
     "modmenu": [
       "de.mcjunky33.armor_hud.client.config.ModMenuIntegration"
@@ -34,6 +34,7 @@
   "depends": {
     "fabricloader": ">=0.15.11",
     "fabric": "*",
-    "minecraft": "~1.21.8"
+    "minecraft": "=1.21.x",
+    "modmenu": ">=9.0.0"
   }
 }
