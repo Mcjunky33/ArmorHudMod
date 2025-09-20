@@ -1,25 +1,10 @@
 # Armor Hud
-
-- **Modrinth:** https://modrinth.com/mod/armor-hud-by-mcjunky33  
-- **Curseforge:** https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33  
-
-## Supported Minecraft Versions
-
-- 1.21
-- 1.21.1
-- 1.21.6
-- 1.21.7
-- 1.21.8  
-*(Support for 1.21.2 – 1.21.5 coming soon)*
-
-## Dependencies
-
-- [Fabric API](https://modrinth.com/mod/fabric-api)
-- [ModMenu](https://modrinth.com/mod/modmenu)
-- [TranslucencyFix (required for 1.21-1.21.1)](https://modrinth.com/mod/translucencyfix/)
-
----
-
+- **Changelog: https://github.com/Mcjunky33/ArmorHudMod/blob/main/CHANGELOGver0.3.md**
+ 
+- **Modrinth: https://modrinth.com/mod/armor-hud-by-mcjunky33**
+  
+- **Curseforge: https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33**
+  
 ## English Description
 
 Armor Hud is a lightweight and fully customizable Minecraft mod that displays your armor and durability directly on the screen. The mod offers a clean and modern interface, allowing you to keep track of your armor status at all times without opening your inventory. All elements of the HUD can be easily adjusted to fit your preferences, making it perfect for both casual and competitive players.
@@ -28,7 +13,7 @@ Armor Hud is a lightweight and fully customizable Minecraft mod that displays yo
 
 - **Customizable Positioning:** Move the armor HUD anywhere on your screen using X and Y offsets.
 - **Split Mode:** Display armor slots split to left and right sides of your screen for more flexible layouts.
-- **Durability Display:** Show armor durability as a bar, a number, a percentage, or all at once.
+- **Durability Display:** Show armor durability as a bar, a number, or both.
 - **Visibility Toggle:** Enable or disable the HUD as needed.
 - **Dark Mode:** Switch between light and dark backgrounds for better visibility.
 - **Vertical/Horizontal Layout:** Display your armor items either side by side or stacked vertically.
@@ -45,7 +30,7 @@ Armor Hud gives you a competitive advantage by letting you monitor your armor’
 
 ### How to Use
 
-1. Install [Fabric API](https://modrinth.com/mod/fabric-api), [ModMenu](https://modrinth.com/mod/modmenu), and [TranslucencyFix](https://modrinth.com/mod/translucencyfix/) (for 1.21-1.21.1.).
+1. Install Fabric and ModMenu.
 2. Download and place the Armor Hud mod into your `mods` folder.
 3. Start Minecraft and open the configuration screen via ModMenu or by pressing F10 to adjust the HUD to your liking.
 
@@ -59,7 +44,7 @@ Armor Hud ist eine schlanke und vollständig anpassbare Minecraft-Mod, die deine
 
 - **Frei positionierbar:** Verschiebe das Armor HUD beliebig auf deinem Bildschirm mit X- und Y-Offsets.
 - **Split-Modus:** Zeigt die Rüstungsslots geteilt auf der linken und rechten Seite des Bildschirms für mehr Flexibilität.
-- **Haltbarkeitsanzeige:** Zeige die Haltbarkeit deiner Rüstung als Balken, als Zahl, als Prozentwert (%) oder alles gleichzeitig an.
+- **Haltbarkeitsanzeige:** Zeige die Haltbarkeit deiner Rüstung als Balken, als Zahl oder beides an.
 - **Sichtbarkeit umschaltbar:** Schalte das HUD je nach Bedarf ein oder aus.
 - **Darkmode:** Wechsel zwischen hellem und dunklem Hintergrund für optimale Lesbarkeit.
 - **Vertikale/Horizontale Anordnung:** Stelle die Rüstungsteile nebeneinander oder untereinander dar.
@@ -76,6 +61,19 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 
 ### Anwendung
 
-1. Installiere [Fabric API](https://modrinth.com/mod/fabric-api), [ModMenu](https://modrinth.com/mod/modmenu) und [TranslucencyFix](https://modrinth.com/mod/translucencyfix/) (für 1.21-1.21.1).
+1. Installiere Fabric und ModMenu.
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
+
+![HUD preview](pictures/1.png)
+![HUD preview](pictures/2.png)
+![HUD preview](pictures/3.png)
+![HUD preview](pictures/4.png)
+![HUD preview](pictures/5.png)
+
+
+
+
+
+
+
