@@ -1,10 +1,10 @@
 # Changelog
 
-## [0.4] – Feature & Compatibility Update
+## [0.4,0.4.1] – Feature & Compatibility Update
 
 ### English
 
-- **Minecraft 1.21 support:** Added full compatibility for Minecraft versions 1.21, 1.21.1, 1.21.6, 1.21.7, and 1.21.8.  
+- **Minecraft 1.21 support:** Added full compatibility for Minecraft versions 1.21, 1.21.1, 1.21.6, 1.21.7, 1.21.8 and 1.21.9.  
   Support for versions 1.21.2 to 1.21.5 will be added soon.
 - **Dependency added:** The mod now requires [TranslucencyFix](https://modrinth.com/mod/translucencyfix/) for correct rendering on 1.21-1.21.1.
 - **Bug fixes:** Small bugfixes and improvements in the HUD renderer for better stability and visuals.
@@ -14,7 +14,7 @@
 
 ### Deutsch
 
-- **Minecraft 1.21 Unterstützung:** Kompatibilität für Minecraft 1.21, 1.21.1, 1.21.6, 1.21.7 und 1.21.8 hinzugefügt.  
+- **Minecraft 1.21 Unterstützung:** Kompatibilität für Minecraft 1.21, 1.21.1, 1.21.6, 1.21.7, 1.21.8 und 1.21.9 hinzugefügt.  
   Die Unterstützung für 1.21.2 bis 1.21.5 folgt demnächst.
 - **Neue Abhängigkeit:** Die Mod benötigt nun [TranslucencyFix](https://modrinth.com/mod/translucencyfix/) für korrektes Rendering ab 1.21-1.21.1.
 - **Bugfixes:** Kleine Fehlerbehebungen und Verbesserungen im Renderer für mehr Stabilität und bessere Darstellung.
