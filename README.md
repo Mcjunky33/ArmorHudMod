@@ -9,7 +9,8 @@
 - 1.21.1
 - 1.21.6
 - 1.21.7
-- 1.21.8  
+- 1.21.8
+- 1.21.9
 *(Support for 1.21.2 – 1.21.5 coming soon)*
 
 ## Dependencies
@@ -78,4 +79,5 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 
 1. Installiere [Fabric API](https://modrinth.com/mod/fabric-api), [ModMenu](https://modrinth.com/mod/modmenu) und [TranslucencyFix](https://modrinth.com/mod/translucencyfix/) (für 1.21-1.21.1).
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
+
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
