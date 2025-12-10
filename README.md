@@ -13,6 +13,7 @@
 - 1.21.9 
 - 1.21.10
 - 1.21.11
+- 
 *Versions 1.21.2 to 1.21.5 were never supported*
 
 ## Dependencies
@@ -83,5 +84,6 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
 
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
+
 
 
