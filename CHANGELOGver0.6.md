@@ -5,8 +5,9 @@
 ### English
 
 - **Bug fixes:** Minor bug fixes and renderer improvements for greater stability and better visuals.
-
-
+- Above all, the vertical layout has finally been given the function it should have.
+- **New Features:** The item durability can now also be displayed... with freely customizable hotkeys in Minecraft Settings.
+- Durability figures can now be displayed simultaneously with the bar.
 ---
 
 ### Deutsch
