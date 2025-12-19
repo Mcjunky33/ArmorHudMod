@@ -1,6 +1,6 @@
 # Changelog
 
-## [0.5.1] – Bugfix & Compatibility Update
+## [0.6] – Bugfix & Compatibility Update
 
 ### English
 
