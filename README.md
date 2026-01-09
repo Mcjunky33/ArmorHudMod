@@ -1,7 +1,7 @@
 # Armor Hud
 
-- **Modrinth:** https://modrinth.com/mod/armor-hud-by-mcjunky33  
-- **Curseforge:** https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33  
+- [Modrinth](https://modrinth.com/mod/armor-hud-by-mcjunky33)
+- [Curseforge](https://www.curseforge.com/minecraft/mc-mods/armor-hud-by-mcjunky33)
 
 ## Supported Minecraft Versions
 
@@ -13,7 +13,7 @@
 - 1.21.9 
 - 1.21.10
 - 1.21.11
-- 
+
 *Versions 1.21.2 to 1.21.5 were never supported*
 
 ## Dependencies
@@ -41,7 +41,6 @@ Armor Hud is a lightweight and fully customizable Minecraft mod that displays yo
 - **Keybind Access:** Open the configuration menu instantly via a keybind (default: F10).
 - **Localization:** The mod automatically adapts to your Minecraft language (supports English and German).
 - **Simple Configuration:** All options are accessible via a user-friendly, modern ModMenu interface.
-- **Crash Fixes:** Various random crashes have been fixed, improving stability.
 
 ### Why use Armor Hud?
 
@@ -72,7 +71,6 @@ Armor Hud ist eine schlanke und vollständig anpassbare Minecraft-Mod, die deine
 - **Tastenkürzel:** Öffne das Konfigurationsmenü direkt per Tastenkürzel (Standard: F10).
 - **Sprachunterstützung:** Die Mod passt sich automatisch deiner Minecraft-Sprache an (Englisch und Deutsch werden unterstützt).
 - **Einfache Konfiguration:** Alle Einstellungen sind bequem über das moderne ModMenu erreichbar.
-- **Fehlerbehebungen:** Diverse zufällige Java-Crashes wurden behoben und die Stabilität erhöht.
 
 ### Warum Armor Hud?
 
@@ -84,6 +82,7 @@ Armor Hud verschafft dir einen Vorteil, da du den Zustand deiner Rüstung immer 
 2. Lade Armor Hud herunter und lege die Datei in deinen `mods`-Ordner.
 
 3. Starte Minecraft und öffne das Konfigurationsmenü über ModMenu oder per F10, um das HUD nach deinen Vorstellungen einzustellen.
+
 
 
 
