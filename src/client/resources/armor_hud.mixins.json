@@ -1,0 +1,8 @@
+{
+  "package": "de.mcjunky33.armor_hud.client.mixin",
+  "client": [
+    "HandledScreenAccessor",
+    "InventoryAccessor",
+    "HandledScreenMixin"
+  ]
+}
