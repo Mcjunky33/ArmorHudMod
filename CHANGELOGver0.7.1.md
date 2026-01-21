@@ -4,8 +4,7 @@
 
 ### English
 
-- **Bug Fixes:** 
-The Armor HUD is no longer displayed when in F1 or spectator mode.
+- **Bug Fixes:** The Armor HUD is no longer displayed when in F1 or spectator mode.
 
 ---
 
