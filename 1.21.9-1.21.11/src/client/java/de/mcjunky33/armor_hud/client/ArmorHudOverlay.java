@@ -6,7 +6,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
@@ -75,11 +74,7 @@ public class ArmorHudOverlay {
             float ratio = durability / (float) maxDamage;
             int percent = Math.round(ratio * 100);
 
-            int colorRGB = ratio > 0.7f ? 0xFF00FF00 :
-                    ratio > 0.4f ? 0xFFFFFF00 :
-                            ratio > 0.2f ? 0xFFFFA500 :
-                                    ratio > 0.05f ? 0xFFFF0000 :
-                                            0xFFAA0000;
+            int colorRGB = getColorForDurability(ratio, true);
 
             String label = "de".equals(config.getLanguage()) ? "Haltbarkeit: " : "Durability: ";
             String infoText = String.format("%d / %d (%d%%)", durability, maxDamage, percent);
@@ -452,12 +447,7 @@ public class ArmorHudOverlay {
                 ? Math.round(ratio * 100) + "%"
                 : String.valueOf(durability);
 
-        int color =
-                ratio > 0.7f ? 0xFF00FF00 :
-                        ratio > 0.4f ? 0xFFFFFF00 :
-                                ratio > 0.2f ? 0xFFFFA500 :
-                                        ratio > 0.05f ? 0xFFFF0000 :
-                                                0xFF000000;
+        int color = getColorForDurability(ratio);
 
         var tr = Minecraft.getInstance().font;
         int textX = boxX + (boxSize - tr.width(text)) / 2 + offsetX;
@@ -470,7 +460,7 @@ public class ArmorHudOverlay {
         context.fill(x1, y1, x2, y2, color);
     }
 
-    private int convertHSVtoARGB(float h, float s, float v) {
+    private static int convertHSVtoARGB(float h, float s, float v) {
         h = (h % 360 + 360) % 360;
 
         float hh = h / 60f;
@@ -509,5 +499,29 @@ public class ArmorHudOverlay {
                 | ((int) (r * 255) << 16)
                 | ((int) (g * 255) << 8)
                 | (int) (b * 255);
+    }
+
+    private static int getColorForDurability(float ratio) {
+        return getColorForDurability(ratio, false);
+    }
+
+    private static int getColorForDurability(float ratio, boolean noFlash) {
+        // if (ratio > 0.7f) return 0xFF00FF00;
+        // if (ratio > 0.4f) return 0xFFFFFF00;
+        // if (ratio > 0.2f) return 0xFFFFA500;
+        // if (ratio > 0.05f) return 0xFFFF0000;
+        // return 0xFFAA0000;
+
+        if (ratio < 0.05) {
+            if (noFlash) {
+                return 0xFFFF0000;
+            }
+
+            long millis = System.currentTimeMillis();
+            millis /= 500;
+            return millis % 2 == 0 ? 0xFF000000 : 0xFFFF0000;
+        }
+
+        return convertHSVtoARGB(ratio * 120, 1, 1);
     }
 }
