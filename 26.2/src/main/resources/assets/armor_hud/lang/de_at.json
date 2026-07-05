@@ -1,0 +1,6 @@
+{
+  "key.category.armor_hud.armor_hud": "ArmorHud",
+  "key.armorhud.open_config": "Config Menu",
+  "key.armorhud.toggle_durability_mode": "Toggle Durability Numbers/Percent/off",
+  "key.armorhud.toggle_hand_durability": "Toggle Show Hand Item Durability"
+}
